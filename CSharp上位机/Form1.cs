@@ -156,16 +156,32 @@ namespace CSharp上位机
                     if (checkbox_send16.Checked)//以16进制发送
                     {
                         string str = textBox_send.Text.Trim();
-                        if (str.Length % 2 != 0)
+                        
+                        if (str.Length % 2 == 1)
                         {
-                            
+                            byte[] data = new byte[str.Length + 1];
+                            for (int i = 0; i < data.Length; i += 2)
+                            {
+                                data[i] = Convert.ToByte(str.Substring(i, 2), 16);
+                            }
+                            serialPort1.Write(data, 0, data.Length);
+                        }
+                        else
+                        {
+                            byte[] data = new byte[str.Length];
+                            for (int i = 0; i < data.Length; i += 2)
+                            {
+                                data[i] = Convert.ToByte(str.Substring(i, 2), 16);
+                            }
+                            serialPort1.Write(data, 0, data.Length);
                         }
                     }
                     else//以字符串发送
                     {
                         string str = textBox_send.Text;
-                        byte[] datas = Encoding.Default.GetBytes(str);
-                        serialPort1.Write(datas, 0, datas.Length);
+                        //byte[] datas = Encoding.Default.GetBytes(str);
+                        //serialPort1.Write(datas, 0, datas.Length);
+                        serialPort1.Write(str);
                     }
                 }
                 catch
