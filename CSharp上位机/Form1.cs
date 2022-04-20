@@ -41,7 +41,33 @@ namespace CSharp上位机
          */
         private void SerialPort_ReceiveData(object sender, SerialDataReceivedEventArgs e)
         {
+            if (checkbox_rec16.Checked)
+            {
+                int length = serialPort1.BytesToRead;
+                byte[] data = new byte[length];
+                serialPort1.Read(data, 0, length);
+                string str = BitConverter.ToString(data).Replace("-", " ") + " ";
+                textBox_rec.AppendText(str);
+                /*for (int i = 0; i < num; i++)
+                {
+                    //data = (byte)serialPort1.ReadByte();
+                    
+                    //textBox_rec.AppendText((str.Length == 1 ? "0" + str : str) + " ");
+                    
 
+                }*/
+
+                //data = Convert.ToByte(serialPort1.ReadExisting(), 16);
+                //str = Convert.ToString(data, 16).ToUpper();
+                //textBox_rec.AppendText(str);
+
+
+            }
+            else
+            {
+                string str = serialPort1.ReadExisting();
+                textBox_rec.AppendText(str);
+            }
         }
 
         /*
