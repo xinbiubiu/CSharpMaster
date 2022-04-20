@@ -53,6 +53,7 @@ namespace CSharp上位机
             this.button_clear = new System.Windows.Forms.Button();
             this.button_send = new System.Windows.Forms.Button();
             this.checkbox_send16 = new System.Windows.Forms.CheckBox();
+            this.checkbox_sendNewline = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -92,6 +93,7 @@ namespace CSharp上位机
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.checkbox_sendNewline);
             this.tabPage1.Controls.Add(this.checkbox_send16);
             this.tabPage1.Controls.Add(this.button_send);
             this.tabPage1.Controls.Add(this.button_clear);
@@ -296,6 +298,7 @@ namespace CSharp上位机
             this.button_send.TabIndex = 13;
             this.button_send.Text = "发送";
             this.button_send.UseVisualStyleBackColor = true;
+            this.button_send.Click += new System.EventHandler(this.button_send_Click);
             // 
             // checkbox_send16
             // 
@@ -306,6 +309,16 @@ namespace CSharp上位机
             this.checkbox_send16.TabIndex = 14;
             this.checkbox_send16.Text = "16进制";
             this.checkbox_send16.UseVisualStyleBackColor = true;
+            // 
+            // checkbox_sendNewline
+            // 
+            this.checkbox_sendNewline.AutoSize = true;
+            this.checkbox_sendNewline.Location = new System.Drawing.Point(533, 349);
+            this.checkbox_sendNewline.Name = "checkbox_sendNewline";
+            this.checkbox_sendNewline.Size = new System.Drawing.Size(72, 16);
+            this.checkbox_sendNewline.TabIndex = 15;
+            this.checkbox_sendNewline.Text = "发送新行";
+            this.checkbox_sendNewline.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -350,6 +363,7 @@ namespace CSharp上位机
         private System.Windows.Forms.Button button_clear;
         private System.Windows.Forms.TextBox textBox_send;
         private System.Windows.Forms.TextBox textBox_rec;
+        private System.Windows.Forms.CheckBox checkbox_sendNewline;
     }
 }
 

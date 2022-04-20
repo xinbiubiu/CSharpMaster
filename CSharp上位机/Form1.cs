@@ -33,7 +33,7 @@ namespace CSharp上位机
             DataBit.Text = "8";
             CheckBit.Text = "无";
 
-            serialPort1.DataReceived += new SerialDataReceivedEventHandler(SerialPort_ReceiveData);
+            serialPort1.DataReceived += SerialPort_ReceiveData;
         }
 
         /*
@@ -48,20 +48,6 @@ namespace CSharp上位机
                 serialPort1.Read(data, 0, length);
                 string str = BitConverter.ToString(data).Replace("-", " ") + " ";
                 textBox_rec.AppendText(str);
-                /*for (int i = 0; i < num; i++)
-                {
-                    //data = (byte)serialPort1.ReadByte();
-                    
-                    //textBox_rec.AppendText((str.Length == 1 ? "0" + str : str) + " ");
-                    
-
-                }*/
-
-                //data = Convert.ToByte(serialPort1.ReadExisting(), 16);
-                //str = Convert.ToString(data, 16).ToUpper();
-                //textBox_rec.AppendText(str);
-
-
             }
             else
             {
@@ -156,6 +142,41 @@ namespace CSharp上位机
         private void button_clear_Click(object sender, EventArgs e)
         {
             textBox_rec.Clear();
+        }
+
+        /*
+         * 功能：发送数据
+         */
+        private void button_send_Click(object sender, EventArgs e)
+        {
+            if (serialPort1.IsOpen)
+            {
+                try
+                {
+                    if (checkbox_send16.Checked)//以16进制发送
+                    {
+                        string str = textBox_send.Text.Trim();
+                        if (str.Length % 2 != 0)
+                        {
+                            
+                        }
+                    }
+                    else//以字符串发送
+                    {
+                        string str = textBox_send.Text;
+                        byte[] datas = Encoding.Default.GetBytes(str);
+                        serialPort1.Write(datas, 0, datas.Length);
+                    }
+                }
+                catch
+                {
+                    serialPort1.Close();
+                    Button_Open.Text = "打开串口";
+                    PortName.Enabled = true;
+                    MessageBox.Show("数据发送错误！", "错误");
+                }
+
+            }
         }
     }
 }
