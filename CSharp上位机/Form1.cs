@@ -8,11 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
+using System.Runtime.InteropServices;
 
 namespace CSharp上位机
 {
     public partial class Form1 : Form
     {
+
+        private List<int> List_ia = new List<int>();
+        Random random = new Random();
+
         public Form1()
         {
             InitializeComponent();
@@ -200,6 +205,53 @@ namespace CSharp上位机
                     MessageBox.Show("数据发送错误！已关闭串口", "错误");
                 }
 
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (button_clearchart.Text == "开始")
+            {
+                timer_chart.Start();
+                button_clearchart.Text = "暂停";
+            }
+            else
+            {
+                timer_chart.Stop();
+                button_clearchart.Text = "开始";
+            }
+        }
+
+        private void timer_chart_Tick(object sender, EventArgs e)
+        {
+            int num1 = random.Next(0, 500);   //随机数
+            List_ia.Add(num1);
+            ListRemove(List_ia);
+            DrawChart(List_ia);
+        }
+
+        private void DrawChart(List<int> List_ia)
+        {
+            chart1.Series[0].Points.Clear();    //清除所有点
+
+            for (int i = 0; i < List_ia.Count; i++)
+            {
+                chart1.Series[0].Points.AddXY(i + 1, List_ia[i]);   //添加点
+            }
+
+        }
+
+        private void ClearAllList()
+        {
+            List_ia.Clear();
+
+        }
+
+        private void ListRemove(List<int> list)
+        {
+            if (list.Count >= 50)
+            {
+                list.RemoveAt(0);
             }
         }
     }
