@@ -31,29 +31,29 @@ namespace CSharp上位机
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Button_Search = new System.Windows.Forms.Button();
+            this.Button_Open = new System.Windows.Forms.Button();
+            this.CheckBit = new System.Windows.Forms.ComboBox();
+            this.DataBit = new System.Windows.Forms.ComboBox();
+            this.StopBit = new System.Windows.Forms.ComboBox();
+            this.BaudRate = new System.Windows.Forms.ComboBox();
+            this.PortName = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.PortName = new System.Windows.Forms.ComboBox();
-            this.BaudRate = new System.Windows.Forms.ComboBox();
-            this.StopBit = new System.Windows.Forms.ComboBox();
-            this.DataBit = new System.Windows.Forms.ComboBox();
-            this.CheckBit = new System.Windows.Forms.ComboBox();
-            this.Button_Open = new System.Windows.Forms.Button();
-            this.checkbox_rec16 = new System.Windows.Forms.CheckBox();
-            this.Button_Search = new System.Windows.Forms.Button();
-            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
-            this.textBox_rec = new System.Windows.Forms.TextBox();
-            this.textBox_send = new System.Windows.Forms.TextBox();
-            this.button_clear = new System.Windows.Forms.Button();
-            this.button_send = new System.Windows.Forms.Button();
-            this.checkbox_send16 = new System.Windows.Forms.CheckBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.checkbox_sendNewline = new System.Windows.Forms.CheckBox();
+            this.checkbox_send16 = new System.Windows.Forms.CheckBox();
+            this.button_send = new System.Windows.Forms.Button();
+            this.button_clear = new System.Windows.Forms.Button();
+            this.textBox_send = new System.Windows.Forms.TextBox();
+            this.checkbox_rec16 = new System.Windows.Forms.CheckBox();
+            this.textBox_rec = new System.Windows.Forms.TextBox();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -79,6 +79,138 @@ namespace CSharp上位机
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "设置";
+            // 
+            // Button_Search
+            // 
+            this.Button_Search.Location = new System.Drawing.Point(156, 23);
+            this.Button_Search.Name = "Button_Search";
+            this.Button_Search.Size = new System.Drawing.Size(75, 20);
+            this.Button_Search.TabIndex = 12;
+            this.Button_Search.Text = "搜索串口";
+            this.Button_Search.UseVisualStyleBackColor = true;
+            this.Button_Search.Click += new System.EventHandler(this.Button_Search_Click);
+            // 
+            // Button_Open
+            // 
+            this.Button_Open.Location = new System.Drawing.Point(8, 175);
+            this.Button_Open.Name = "Button_Open";
+            this.Button_Open.Size = new System.Drawing.Size(137, 35);
+            this.Button_Open.TabIndex = 10;
+            this.Button_Open.Text = "打开串口";
+            this.Button_Open.UseVisualStyleBackColor = true;
+            this.Button_Open.Click += new System.EventHandler(this.Button_Open_Click);
+            // 
+            // CheckBit
+            // 
+            this.CheckBit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CheckBit.FormattingEnabled = true;
+            this.CheckBit.Items.AddRange(new object[] {
+            "无",
+            "奇校验",
+            "偶校验"});
+            this.CheckBit.Location = new System.Drawing.Point(53, 149);
+            this.CheckBit.Name = "CheckBit";
+            this.CheckBit.Size = new System.Drawing.Size(92, 20);
+            this.CheckBit.TabIndex = 9;
+            // 
+            // DataBit
+            // 
+            this.DataBit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.DataBit.FormattingEnabled = true;
+            this.DataBit.Items.AddRange(new object[] {
+            "5",
+            "6",
+            "7",
+            "8",
+            "9"});
+            this.DataBit.Location = new System.Drawing.Point(53, 118);
+            this.DataBit.Name = "DataBit";
+            this.DataBit.Size = new System.Drawing.Size(92, 20);
+            this.DataBit.TabIndex = 8;
+            // 
+            // StopBit
+            // 
+            this.StopBit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.StopBit.FormattingEnabled = true;
+            this.StopBit.Items.AddRange(new object[] {
+            "1",
+            "1.5",
+            "2"});
+            this.StopBit.Location = new System.Drawing.Point(53, 86);
+            this.StopBit.Name = "StopBit";
+            this.StopBit.Size = new System.Drawing.Size(92, 20);
+            this.StopBit.TabIndex = 7;
+            // 
+            // BaudRate
+            // 
+            this.BaudRate.FormattingEnabled = true;
+            this.BaudRate.Items.AddRange(new object[] {
+            "600",
+            "1200",
+            "2400",
+            "4800",
+            "9600",
+            "14400",
+            "19200",
+            "115200"});
+            this.BaudRate.Location = new System.Drawing.Point(53, 53);
+            this.BaudRate.Name = "BaudRate";
+            this.BaudRate.Size = new System.Drawing.Size(92, 20);
+            this.BaudRate.TabIndex = 6;
+            // 
+            // PortName
+            // 
+            this.PortName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.PortName.FormattingEnabled = true;
+            this.PortName.Location = new System.Drawing.Point(53, 23);
+            this.PortName.Name = "PortName";
+            this.PortName.Size = new System.Drawing.Size(92, 20);
+            this.PortName.TabIndex = 5;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 152);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 12);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "校验位";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 121);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "数据位";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 89);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(41, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "停止位";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "串口号";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(41, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "波特率";
             // 
             // tabControl1
             // 
@@ -108,137 +240,54 @@ namespace CSharp上位机
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "串口助手";
             // 
-            // tabPage2
+            // checkbox_sendNewline
             // 
-            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(791, 424);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.checkbox_sendNewline.AutoSize = true;
+            this.checkbox_sendNewline.Location = new System.Drawing.Point(533, 349);
+            this.checkbox_sendNewline.Name = "checkbox_sendNewline";
+            this.checkbox_sendNewline.Size = new System.Drawing.Size(72, 16);
+            this.checkbox_sendNewline.TabIndex = 15;
+            this.checkbox_sendNewline.Text = "发送新行";
+            this.checkbox_sendNewline.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // checkbox_send16
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "串口号";
+            this.checkbox_send16.AutoSize = true;
+            this.checkbox_send16.Location = new System.Drawing.Point(533, 371);
+            this.checkbox_send16.Name = "checkbox_send16";
+            this.checkbox_send16.Size = new System.Drawing.Size(60, 16);
+            this.checkbox_send16.TabIndex = 14;
+            this.checkbox_send16.Text = "16进制";
+            this.checkbox_send16.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // button_send
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "波特率";
+            this.button_send.Location = new System.Drawing.Point(532, 393);
+            this.button_send.Name = "button_send";
+            this.button_send.Size = new System.Drawing.Size(75, 23);
+            this.button_send.TabIndex = 13;
+            this.button_send.Text = "发送";
+            this.button_send.UseVisualStyleBackColor = true;
+            this.button_send.Click += new System.EventHandler(this.button_send_Click);
             // 
-            // label3
+            // button_clear
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 89);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "停止位";
+            this.button_clear.Location = new System.Drawing.Point(684, 200);
+            this.button_clear.Name = "button_clear";
+            this.button_clear.Size = new System.Drawing.Size(75, 23);
+            this.button_clear.TabIndex = 12;
+            this.button_clear.Text = "清空接收";
+            this.button_clear.UseVisualStyleBackColor = true;
+            this.button_clear.Click += new System.EventHandler(this.button_clear_Click);
             // 
-            // label4
+            // textBox_send
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 121);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(41, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "数据位";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 152);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "校验位";
-            // 
-            // PortName
-            // 
-            this.PortName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.PortName.FormattingEnabled = true;
-            this.PortName.Location = new System.Drawing.Point(53, 23);
-            this.PortName.Name = "PortName";
-            this.PortName.Size = new System.Drawing.Size(92, 20);
-            this.PortName.TabIndex = 5;
-            // 
-            // BaudRate
-            // 
-            this.BaudRate.FormattingEnabled = true;
-            this.BaudRate.Items.AddRange(new object[] {
-            "600",
-            "1200",
-            "2400",
-            "4800",
-            "9600",
-            "14400",
-            "19200",
-            "115200"});
-            this.BaudRate.Location = new System.Drawing.Point(53, 53);
-            this.BaudRate.Name = "BaudRate";
-            this.BaudRate.Size = new System.Drawing.Size(92, 20);
-            this.BaudRate.TabIndex = 6;
-            // 
-            // StopBit
-            // 
-            this.StopBit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.StopBit.FormattingEnabled = true;
-            this.StopBit.Items.AddRange(new object[] {
-            "1",
-            "1.5",
-            "2"});
-            this.StopBit.Location = new System.Drawing.Point(53, 86);
-            this.StopBit.Name = "StopBit";
-            this.StopBit.Size = new System.Drawing.Size(92, 20);
-            this.StopBit.TabIndex = 7;
-            // 
-            // DataBit
-            // 
-            this.DataBit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.DataBit.FormattingEnabled = true;
-            this.DataBit.Items.AddRange(new object[] {
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
-            this.DataBit.Location = new System.Drawing.Point(53, 118);
-            this.DataBit.Name = "DataBit";
-            this.DataBit.Size = new System.Drawing.Size(92, 20);
-            this.DataBit.TabIndex = 8;
-            // 
-            // CheckBit
-            // 
-            this.CheckBit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CheckBit.FormattingEnabled = true;
-            this.CheckBit.Items.AddRange(new object[] {
-            "无",
-            "奇校验",
-            "偶校验"});
-            this.CheckBit.Location = new System.Drawing.Point(53, 149);
-            this.CheckBit.Name = "CheckBit";
-            this.CheckBit.Size = new System.Drawing.Size(92, 20);
-            this.CheckBit.TabIndex = 9;
-            // 
-            // Button_Open
-            // 
-            this.Button_Open.Location = new System.Drawing.Point(8, 175);
-            this.Button_Open.Name = "Button_Open";
-            this.Button_Open.Size = new System.Drawing.Size(137, 35);
-            this.Button_Open.TabIndex = 10;
-            this.Button_Open.Text = "打开串口";
-            this.Button_Open.UseVisualStyleBackColor = true;
-            this.Button_Open.Click += new System.EventHandler(this.Button_Open_Click);
+            this.textBox_send.Location = new System.Drawing.Point(6, 229);
+            this.textBox_send.Multiline = true;
+            this.textBox_send.Name = "textBox_send";
+            this.textBox_send.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox_send.Size = new System.Drawing.Size(520, 187);
+            this.textBox_send.TabIndex = 2;
             // 
             // checkbox_rec16
             // 
@@ -249,16 +298,6 @@ namespace CSharp上位机
             this.checkbox_rec16.TabIndex = 11;
             this.checkbox_rec16.Text = "16进制";
             this.checkbox_rec16.UseVisualStyleBackColor = true;
-            // 
-            // Button_Search
-            // 
-            this.Button_Search.Location = new System.Drawing.Point(156, 23);
-            this.Button_Search.Name = "Button_Search";
-            this.Button_Search.Size = new System.Drawing.Size(75, 20);
-            this.Button_Search.TabIndex = 12;
-            this.Button_Search.Text = "搜索串口";
-            this.Button_Search.UseVisualStyleBackColor = true;
-            this.Button_Search.Click += new System.EventHandler(this.Button_Search_Click);
             // 
             // textBox_rec
             // 
@@ -271,54 +310,15 @@ namespace CSharp上位机
             this.textBox_rec.Size = new System.Drawing.Size(429, 217);
             this.textBox_rec.TabIndex = 1;
             // 
-            // textBox_send
+            // tabPage2
             // 
-            this.textBox_send.Location = new System.Drawing.Point(6, 229);
-            this.textBox_send.Multiline = true;
-            this.textBox_send.Name = "textBox_send";
-            this.textBox_send.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox_send.Size = new System.Drawing.Size(520, 187);
-            this.textBox_send.TabIndex = 2;
-            // 
-            // button_clear
-            // 
-            this.button_clear.Location = new System.Drawing.Point(684, 200);
-            this.button_clear.Name = "button_clear";
-            this.button_clear.Size = new System.Drawing.Size(75, 23);
-            this.button_clear.TabIndex = 12;
-            this.button_clear.Text = "清空接收";
-            this.button_clear.UseVisualStyleBackColor = true;
-            this.button_clear.Click += new System.EventHandler(this.button_clear_Click);
-            // 
-            // button_send
-            // 
-            this.button_send.Location = new System.Drawing.Point(532, 393);
-            this.button_send.Name = "button_send";
-            this.button_send.Size = new System.Drawing.Size(75, 23);
-            this.button_send.TabIndex = 13;
-            this.button_send.Text = "发送";
-            this.button_send.UseVisualStyleBackColor = true;
-            this.button_send.Click += new System.EventHandler(this.button_send_Click);
-            // 
-            // checkbox_send16
-            // 
-            this.checkbox_send16.AutoSize = true;
-            this.checkbox_send16.Location = new System.Drawing.Point(533, 371);
-            this.checkbox_send16.Name = "checkbox_send16";
-            this.checkbox_send16.Size = new System.Drawing.Size(60, 16);
-            this.checkbox_send16.TabIndex = 14;
-            this.checkbox_send16.Text = "16进制";
-            this.checkbox_send16.UseVisualStyleBackColor = true;
-            // 
-            // checkbox_sendNewline
-            // 
-            this.checkbox_sendNewline.AutoSize = true;
-            this.checkbox_sendNewline.Location = new System.Drawing.Point(533, 349);
-            this.checkbox_sendNewline.Name = "checkbox_sendNewline";
-            this.checkbox_sendNewline.Size = new System.Drawing.Size(72, 16);
-            this.checkbox_sendNewline.TabIndex = 15;
-            this.checkbox_sendNewline.Text = "发送新行";
-            this.checkbox_sendNewline.UseVisualStyleBackColor = true;
+            this.tabPage2.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(791, 424);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
             // 
             // Form1
             // 

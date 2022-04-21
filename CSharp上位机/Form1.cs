@@ -155,32 +155,40 @@ namespace CSharp上位机
                 {
                     if (checkbox_send16.Checked)//以16进制发送
                     {
-                        string str = textBox_send.Text.Trim();
+                        string str = textBox_send.Text.Replace(" ", "");
                         
                         if (str.Length % 2 == 1)
                         {
-                            byte[] data = new byte[str.Length + 1];
-                            for (int i = 0; i < data.Length; i += 2)
-                            {
-                                data[i] = Convert.ToByte(str.Substring(i, 2), 16);
-                            }
-                            serialPort1.Write(data, 0, data.Length);
+                            str = str.Insert(str.Length - 1, "0");
                         }
-                        else
+
+                        int length = str.Length / 2;
+                        if (checkbox_sendNewline.Checked)
                         {
-                            byte[] data = new byte[str.Length];
-                            for (int i = 0; i < data.Length; i += 2)
-                            {
-                                data[i] = Convert.ToByte(str.Substring(i, 2), 16);
-                            }
-                            serialPort1.Write(data, 0, data.Length);
+                            length += 2;
                         }
+
+                        byte[] data = new byte[length];
+
+                        for (int i = 0; i < str.Length / 2; i++)
+                        {
+                            data[i] = Convert.ToByte(str.Substring(i * 2, 2), 16);
+                        }
+                        if (checkbox_sendNewline.Checked)
+                        {
+                            data[length - 2] = Convert.ToByte("0D", 16);
+                            data[length - 1] = Convert.ToByte("0A", 16);
+                        }
+
+                        serialPort1.Write(data, 0, data.Length);
                     }
                     else//以字符串发送
                     {
                         string str = textBox_send.Text;
-                        //byte[] datas = Encoding.Default.GetBytes(str);
-                        //serialPort1.Write(datas, 0, datas.Length);
+                        if (checkbox_sendNewline.Checked)
+                        {
+                            str += "\r\n";
+                        }
                         serialPort1.Write(str);
                     }
                 }
@@ -189,7 +197,7 @@ namespace CSharp上位机
                     serialPort1.Close();
                     Button_Open.Text = "打开串口";
                     PortName.Enabled = true;
-                    MessageBox.Show("数据发送错误！", "错误");
+                    MessageBox.Show("数据发送错误！已关闭串口", "错误");
                 }
 
             }
