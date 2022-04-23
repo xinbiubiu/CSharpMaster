@@ -30,9 +30,9 @@ namespace CSharp上位机
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.Button_Search = new System.Windows.Forms.Button();
             this.Button_Open = new System.Windows.Forms.Button();
@@ -59,25 +59,25 @@ namespace CSharp上位机
             this.button_clearchart = new System.Windows.Forms.Button();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.text_setmin = new System.Windows.Forms.NumericUpDown();
+            this.label_min = new System.Windows.Forms.Label();
+            this.label_max = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.text_setmax = new System.Windows.Forms.NumericUpDown();
+            this.button_set = new System.Windows.Forms.Button();
+            this.label_Temp = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.timer_chart = new System.Windows.Forms.Timer(this.components);
-            this.label6 = new System.Windows.Forms.Label();
-            this.label_Temp = new System.Windows.Forms.Label();
-            this.button_set = new System.Windows.Forms.Button();
-            this.text_setmax = new System.Windows.Forms.NumericUpDown();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label_max = new System.Windows.Forms.Label();
-            this.label_min = new System.Windows.Forms.Label();
-            this.text_setmin = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.tabPage3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.text_setmax)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.text_setmin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.text_setmax)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -356,22 +356,22 @@ namespace CSharp上位机
             // 
             // chart1
             // 
-            chartArea2.CursorX.IsUserEnabled = true;
-            chartArea2.CursorX.IsUserSelectionEnabled = true;
-            chartArea2.CursorY.IsUserEnabled = true;
-            chartArea2.CursorY.IsUserSelectionEnabled = true;
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.CursorX.IsUserEnabled = true;
+            chartArea1.CursorX.IsUserSelectionEnabled = true;
+            chartArea1.CursorY.IsUserEnabled = true;
+            chartArea1.CursorY.IsUserSelectionEnabled = true;
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(8, 6);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.YValuesPerPoint = 2;
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series1.YValuesPerPoint = 2;
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(776, 352);
             this.chart1.TabIndex = 0;
             this.chart1.Text = "chart1";
@@ -394,31 +394,61 @@ namespace CSharp上位机
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "温度设置";
             // 
-            // timer_chart
+            // text_setmin
             // 
-            this.timer_chart.Interval = 50;
-            this.timer_chart.Tick += new System.EventHandler(this.timer_chart_Tick);
+            this.text_setmin.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.text_setmin.Location = new System.Drawing.Point(467, 142);
+            this.text_setmin.Name = "text_setmin";
+            this.text_setmin.Size = new System.Drawing.Size(139, 44);
+            this.text_setmin.TabIndex = 11;
             // 
-            // label6
+            // label_min
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(8, 10);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(260, 48);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "当前温度：";
+            this.label_min.AutoSize = true;
+            this.label_min.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_min.Location = new System.Drawing.Point(274, 138);
+            this.label_min.Name = "label_min";
+            this.label_min.Size = new System.Drawing.Size(140, 48);
+            this.label_min.TabIndex = 10;
+            this.label_min.Text = "00.00";
             // 
-            // label_Temp
+            // label_max
             // 
-            this.label_Temp.AutoSize = true;
-            this.label_Temp.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_Temp.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label_Temp.Location = new System.Drawing.Point(274, 10);
-            this.label_Temp.Name = "label_Temp";
-            this.label_Temp.Size = new System.Drawing.Size(140, 48);
-            this.label_Temp.TabIndex = 2;
-            this.label_Temp.Text = "00.00";
+            this.label_max.AutoSize = true;
+            this.label_max.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_max.Location = new System.Drawing.Point(274, 73);
+            this.label_max.Name = "label_max";
+            this.label_max.Size = new System.Drawing.Size(140, 48);
+            this.label_max.TabIndex = 9;
+            this.label_max.Text = "00.00";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Location = new System.Drawing.Point(8, 138);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(164, 48);
+            this.label8.TabIndex = 8;
+            this.label8.Text = "下限：";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(8, 73);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(164, 48);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "上限：";
+            // 
+            // text_setmax
+            // 
+            this.text_setmax.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.text_setmax.Location = new System.Drawing.Point(467, 77);
+            this.text_setmax.Name = "text_setmax";
+            this.text_setmax.Size = new System.Drawing.Size(139, 44);
+            this.text_setmax.TabIndex = 5;
             // 
             // button_set
             // 
@@ -431,61 +461,31 @@ namespace CSharp上位机
             this.button_set.UseVisualStyleBackColor = true;
             this.button_set.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // text_setmax
+            // label_Temp
             // 
-            this.text_setmax.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.text_setmax.Location = new System.Drawing.Point(467, 77);
-            this.text_setmax.Name = "text_setmax";
-            this.text_setmax.Size = new System.Drawing.Size(139, 44);
-            this.text_setmax.TabIndex = 5;
+            this.label_Temp.AutoSize = true;
+            this.label_Temp.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label_Temp.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label_Temp.Location = new System.Drawing.Point(274, 10);
+            this.label_Temp.Name = "label_Temp";
+            this.label_Temp.Size = new System.Drawing.Size(140, 48);
+            this.label_Temp.TabIndex = 2;
+            this.label_Temp.Text = "00.00";
             // 
-            // label7
+            // label6
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(8, 73);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(164, 48);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "上限：";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(8, 10);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(260, 48);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "当前温度：";
             // 
-            // label8
+            // timer_chart
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(8, 138);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(164, 48);
-            this.label8.TabIndex = 8;
-            this.label8.Text = "下限：";
-            // 
-            // label_max
-            // 
-            this.label_max.AutoSize = true;
-            this.label_max.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_max.Location = new System.Drawing.Point(274, 73);
-            this.label_max.Name = "label_max";
-            this.label_max.Size = new System.Drawing.Size(140, 48);
-            this.label_max.TabIndex = 9;
-            this.label_max.Text = "37.00";
-            // 
-            // label_min
-            // 
-            this.label_min.AutoSize = true;
-            this.label_min.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label_min.Location = new System.Drawing.Point(274, 138);
-            this.label_min.Name = "label_min";
-            this.label_min.Size = new System.Drawing.Size(140, 48);
-            this.label_min.TabIndex = 10;
-            this.label_min.Text = "25.00";
-            // 
-            // text_setmin
-            // 
-            this.text_setmin.Font = new System.Drawing.Font("宋体", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.text_setmin.Location = new System.Drawing.Point(467, 142);
-            this.text_setmin.Name = "text_setmin";
-            this.text_setmin.Size = new System.Drawing.Size(139, 44);
-            this.text_setmin.TabIndex = 11;
+            this.timer_chart.Interval = 50;
+            this.timer_chart.Tick += new System.EventHandler(this.timer_chart_Tick);
             // 
             // Form1
             // 
@@ -506,8 +506,8 @@ namespace CSharp上位机
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.text_setmax)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.text_setmin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.text_setmax)).EndInit();
             this.ResumeLayout(false);
 
         }

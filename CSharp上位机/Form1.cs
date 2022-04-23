@@ -14,6 +14,7 @@ namespace CSharp上位机
 {
     public partial class Form1 : Form
     {
+        private byte[] data_to_send = new byte[7];
 
         private List<int> List_ia = new List<int>();
         Random random = new Random();
@@ -33,7 +34,7 @@ namespace CSharp上位机
             PortName.Items.AddRange(ports);
             PortName.SelectedIndex = PortName.Items.Count > 0 ? 0 : -1;
 
-            BaudRate.Text = "4800";
+            BaudRate.Text = "115200";
             StopBit.Text = "1";
             DataBit.Text = "8";
             CheckBit.Text = "无";
@@ -46,18 +47,45 @@ namespace CSharp上位机
          */
         private void SerialPort_ReceiveData(object sender, SerialDataReceivedEventArgs e)
         {
+            int length = serialPort1.BytesToRead;
+            byte[] data = new byte[length];
+            serialPort1.Read(data, 0, length);
+            if ((data[0] == 0xff) && (data[1] == 0x01))
+            {
+                int datalength = data[2];
+                byte[] data_to_display = new byte[datalength];
+                for (int i = 0; i < datalength; i++)
+                {
+                    data_to_display[i] = data[i + 3];
+                }
+                float display_temp_num = (((Int16)data_to_display[0] << 8) | (data_to_display[1])) / 100.0f;
+                float display_max_num = (((Int16)data_to_display[2] << 8) | (data_to_display[3])) / 100.0f;
+                float display_min_num = (((Int16)data_to_display[4] << 8) | (data_to_display[5])) / 100.0f;
+
+                string display_temp = display_temp_num.ToString();
+                string display_max = display_max_num.ToString();
+                string display_min = display_min_num.ToString();
+                label_Temp.Text = display_temp;
+                label_max.Text = display_max;
+                label_min.Text = display_min;
+                if (display_temp_num > display_max_num || display_temp_num < display_min_num)
+                {
+                    label_Temp.ForeColor = Color.Red;
+                }
+                else
+                {
+                    label_Temp.ForeColor = Color.Black;
+                }
+            }
             if (checkbox_rec16.Checked)
             {
-                int length = serialPort1.BytesToRead;
-                byte[] data = new byte[length];
-                serialPort1.Read(data, 0, length);
                 string str = BitConverter.ToString(data).Replace("-", " ") + " ";
                 textBox_rec.AppendText(str);
             }
             else
             {
-                string str = serialPort1.ReadExisting();
-                textBox_rec.AppendText(str);
+                //string str = serialPort1.ReadExisting();
+                //textBox_rec.AppendText(str);
             }
         }
 
@@ -257,7 +285,32 @@ namespace CSharp上位机
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            label_Temp.ForeColor = Color.Red;
+            
+            
+            if (serialPort1.IsOpen)
+            {
+                data_to_send[0] = 0xff;
+                data_to_send[1] = 0x02;
+                data_to_send[2] = 0x04;
+                //高位在前低位在后
+                data_to_send[3] = (byte)(Convert.ToInt16(text_setmax.Value * 100) >> 8);
+                data_to_send[4] = (byte)(Convert.ToInt16(text_setmax.Value * 100));
+                data_to_send[5] = (byte)(Convert.ToInt16(text_setmin.Value * 100) >> 8);
+                data_to_send[6] = (byte)(Convert.ToInt16(text_setmin.Value * 100));
+                try
+                {
+                    serialPort1.Write(data_to_send, 0, data_to_send.Length);
+                }
+                catch
+                {
+                    MessageBox.Show("发送数据出错", "错误");
+                }
+                
+            }
+            else
+            {
+                MessageBox.Show("请打开串口", "提示");
+            }
         }
     }
 }
